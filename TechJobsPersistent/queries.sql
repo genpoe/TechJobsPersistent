@@ -1,4 +1,7 @@
 --Part 1
+--Id int AI PK
+--Name longtext
+--EmployerId int
 
 --Part 2
 
