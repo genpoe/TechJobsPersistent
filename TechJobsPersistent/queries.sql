@@ -1,10 +1,9 @@
 --Part 1
-
+SELECT Id, Name, EmployerId
+FROM jobs;
 --Id int AI PK
 --Name longtext
 --EmployerId int
-SELECT Id, Name, EmployerId
-FROM jobs;
 
 --Part 2
 
