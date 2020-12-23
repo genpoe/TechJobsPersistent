@@ -7,7 +7,6 @@
 
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Employer\" />
     <Folder Include="Data\" />
     <Folder Include="Views\List\" />
