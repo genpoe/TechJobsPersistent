@@ -29,11 +29,13 @@ namespace TechJobsPersistent.Controllers
             return View(employers);
         }
 
+
         public IActionResult Add()
         {
             AddEmployerViewModel viewModel = new AddEmployerViewModel();
             return View(viewModel);
         }
+
 
         public IActionResult ProcessAddEmployerForm(AddEmployerViewModel viewModel)
         {
@@ -66,11 +68,9 @@ namespace TechJobsPersistent.Controllers
         {
             List<Employer> employers = context.Employers
                 .Where(em => em.Id == id)
-                .Include(em => em.Name)
-                .Include(em => em.Location)
                 .ToList();
 
-            return View(employers);
+            return View(employers[0]);
         }
     }
 }
