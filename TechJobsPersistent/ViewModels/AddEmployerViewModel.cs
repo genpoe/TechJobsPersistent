@@ -17,9 +17,9 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Location is required")]
         public string Location { get; set; }
 
-        public List<SelectListItem> Employers { get; set; }
+/*        public List<SelectListItem> Employers { get; set; }*/
 
-        public AddEmployerViewModel(List<Employer> employers)
+/*        public AddEmployerViewModel(List<Employer> employers)
         {
             Employers = new List<SelectListItem>();
 
@@ -31,11 +31,11 @@ namespace TechJobsPersistent.ViewModels
                     Text = employer.Name
                 });
             }
-        }
+        }*/
 
-        public AddEmployerViewModel()
+/*        public AddEmployerViewModel()
         {
         }
-
+*/
     }
 }

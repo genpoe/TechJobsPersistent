@@ -1,10 +1,8 @@
-﻿@using TechJobsPersistent.Models
-@using TechJobsPersistent.ViewModels
-@model AddEmployerViewModel;
+﻿@model TechJobsPersistent.Models.Employer;
 
-<h1>Employer: </h1>
+<h1>Employer: @Model.Name</h1>
 
 <div>
-    <p>Name: name</p>
-    <p>Location: location</p>
+    <p>Name: @Model.Name</p>
+    <p>Location: @Model.Location</p>
 </div>

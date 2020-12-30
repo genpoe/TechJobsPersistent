@@ -32,7 +32,13 @@ namespace TechJobsPersistent.Controllers
         [HttpGet("/Add")]
         public IActionResult AddJob()
         {
-            AddJobViewModel viewModel = new AddJobViewModel();
+            List<SelectListItem> employers = new List<SelectListItem>();
+
+            foreach (Employer em in context.Employers)
+            {
+                employers.Add(new SelectListItem(em.Name, em.Id.ToString()));
+            }
+            AddJobViewModel viewModel = new AddJobViewModel(employers);
             return View(viewModel);
         }
 
@@ -60,7 +66,14 @@ namespace TechJobsPersistent.Controllers
                 }
                 return Redirect("/Home/Detail/" + name);
             }
-            return View(viewModel);
+
+            List<SelectListItem> employers = new List<SelectListItem>();
+            foreach (Employer em in context.Employers)
+            {
+                employers.Add(new SelectListItem(em.Name, em.Id.ToString()));
+            }
+            AddJobViewModel viewModel2 = new AddJobViewModel(employers);
+            return View("AddJob", viewModel2);
         }
 
         public IActionResult Detail(int id)

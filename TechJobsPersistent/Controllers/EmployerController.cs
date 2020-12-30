@@ -59,18 +59,16 @@ namespace TechJobsPersistent.Controllers
                     context.Employers.Add(employer);
                     context.SaveChanges();
                 }
-                return Redirect("/about/" + name);
+                return Redirect("/Employer");
             }
-            return View(viewModel);
+            return View("Add", viewModel);
         }
 
         public IActionResult About(int id)
         {
-            List<Employer> employers = context.Employers
-                .Where(em => em.Id == id)
-                .ToList();
+            Employer employer = context.Employers.Find(id);
 
-            return View(employers[0]);
+            return View(employer);
         }
     }
 }

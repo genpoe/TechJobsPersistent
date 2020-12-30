@@ -6,6 +6,9 @@ FROM jobs;
 --EmployerId int
 
 --Part 2
+SELECT *
+FROM techjobs.employers
+WHERE (Location = "San Francisco");
 
 --Part 3
 
