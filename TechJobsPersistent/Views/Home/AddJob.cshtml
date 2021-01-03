@@ -21,7 +21,7 @@
         @foreach (Skill skill in Model.Skills)
         {
             <input type="checkbox" name="selectedSkills" value="@skill.Id" />
-            <label>@skill.Name</label>
+            <label for="@skill.Id">@skill.Name</label>
             <br />
         }
         <a href="/Skill/Add">Add Skill</a>

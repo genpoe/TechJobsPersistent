@@ -48,8 +48,19 @@ namespace TechJobsPersistent.Controllers
             return View(viewModel);
         }
 
-        public IActionResult ProcessAddJobForm(AddJobViewModel viewModel, Skill[] selectedSkills)
+        public IActionResult ProcessAddJobForm(AddJobViewModel viewModel, String[] selectedSkills)
         {
+            List<SelectListItem> employers = new List<SelectListItem>();
+            List<Skill> skillsList = new List<Skill>();
+            foreach (Employer em in context.Employers)
+            {
+                employers.Add(new SelectListItem(em.Name, em.Id.ToString()));
+            }
+            foreach (Skill skill in context.Skills)
+            {
+                skillsList.Add(skill);
+            }
+
             if (ModelState.IsValid)
             {
                 string name = viewModel.JobName;
@@ -69,34 +80,26 @@ namespace TechJobsPersistent.Controllers
                     };
                     context.Jobs.Add(job);
 
-                    foreach (Skill skill in selectedSkills)
+                    foreach (String skill in selectedSkills)
                     {
                         JobSkill jobSkill = new JobSkill
                         {
                             JobId = employerId,
                             Job = job,
-                            SkillId = skill.Id,
-                            Skill = skill
+                            SkillId = int.Parse(skill),
+                            Skill = context.Skills.Find(int.Parse(skill))
                         };
                         context.JobSkills.Add(jobSkill);
                     }
 
                     context.SaveChanges();
                 }
-                return Redirect("/Home/Detail/" + name);
+                return Redirect("Index");
             }
+            
 
-            List<SelectListItem> employers = new List<SelectListItem>();
-            List<Skill> skillsList = new List<Skill>();
+            
 
-            foreach (Employer em in context.Employers)
-            {
-                employers.Add(new SelectListItem(em.Name, em.Id.ToString()));
-            }
-            foreach (Skill skill in context.Skills)
-            {
-                skillsList.Add(skill);
-            }
             AddJobViewModel viewModel2 = new AddJobViewModel(employers, skillsList);
             return View("AddJob", viewModel2);
         }
